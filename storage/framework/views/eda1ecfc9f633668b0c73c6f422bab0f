@@ -1,0 +1,49 @@
+<aside class="aside-menu">
+        <div class="branding">
+            <div class="sm-show close-aside">
+                <i class="ion-ios-close-outline"></i>
+            </div>
+            <a href="">
+                <img src="<?php echo e(asset('uploads/images/' . config('insura.logo'))); ?>" class="ui image">
+            </a>
+        </div>
+        <div class="scrollbar">
+            <div class="ui link list">
+                <a class="item" href="<?php echo e(action('IndexController@getDashboard')); ?>">
+                    <i class="ion-ios-speedometer-outline icon"></i> <div class="content"><?php echo e(trans('sidebar.link.dashboard')); ?> </div>
+                </a>
+
+                <?php echo $__env->yieldContent('clients'); ?>
+
+                <a class="item" href="<?php echo e(action('PolicyController@getAll')); ?>">
+                    <i class="ion-ios-bookmarks-outline icon"></i> <div class="content"><?php echo e(trans('sidebar.link.policies')); ?> </div>
+                </a>
+
+                <?php echo $__env->yieldContent('brokers'); ?>
+
+                <a class="item insura-chats" href="<?php echo e(action('InboxController@getAll')); ?>">
+                    <?php if($unread_chats_count > 0): ?>
+                    <span class="ui red circular label pull-right"><?php echo e($unread_chats_count); ?></span>
+                    <?php endif; ?>
+                    <i class="ion-ios-chatbubble-outline icon"></i>
+                    <div class="content"><?php echo e(trans('sidebar.link.inbox')); ?></div>
+                </a>
+                <a class="item" href="<?php echo e(action('CommunicationController@get')); ?>">
+                    <i class="ion-ios-chatboxes-outline icon"></i> <div class="content"><?php echo e(trans('sidebar.link.communication')); ?> </div>
+                </a>
+                <a class="item" href="<?php echo e(action('ReportController@get')); ?>">
+                    <i class="ion-ios-pulse-strong icon"></i> <div class="content"><?php echo e(trans('sidebar.link.reports')); ?> </div>
+                </a>
+
+                <?php echo $__env->yieldContent('products'); ?>
+
+                <?php echo $__env->yieldContent('companies'); ?>
+
+                <?php echo $__env->yieldContent('staff'); ?>
+                
+                <a class="item" href="<?php echo e(action('SettingController@get')); ?>">
+                    <i class="ion-ios-gear-outline icon"></i> <div class="content"><?php echo e(trans('sidebar.link.settings')); ?> </div>
+                </a>
+            </div>
+        </div>
+    </aside>

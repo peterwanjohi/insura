@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="Insura is an online Insurance Agency Management System" name="description">
+    <meta content="Simcy Creative" name="author">
+    <meta content="<?php echo e(csrf_token()); ?>" name="csrf-token">
+    <title><?php echo $__env->yieldContent('title'); ?> - <?php echo e(config('insura.name')); ?> | Insurance Agency Management System</title>
+    <base href="<?php echo e(env('BASE_HREF', '')); ?>" />
+    <!-- Favicon -->
+    <link href="<?php echo e(asset('favicon.ico')); ?>" rel="icon" sizes="16x16" type="image/x-icon">
+    <link href="<?php echo e(asset('uploads/images/' . config('insura.favicon'))); ?>" rel="icon" type="<?php echo e(mime_content_type(storage_path() . '/app/images/' . config('insura.favicon'))); ?>">
+    <!-- Font and Icon Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400,500,700" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/fonts/ionicons/css/ionicons.min.css')); ?>" rel="stylesheet">
+    <!-- Core CSS -->
+    <link href="<?php echo e(asset('assets/libs/bootstrap/bootstrap.min.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/libs/semantic-UI/semantic.min.css')); ?>" rel="stylesheet">
+    <!-- Page Specific CSS -->
+    <link href="<?php echo e(asset('assets/libs/scrollbars/jquery.scrollbar.css')); ?>" rel="stylesheet">
+    <?php echo $__env->yieldContent('page_stylesheets'); ?>
+    <!-- Custom CSS -->
+    <link href="<?php echo e(asset('assets/css/style.css')); ?>" rel="stylesheet">
+    <!-- Extra Customization CSS -->
+    <?php echo $__env->yieldContent('extra_stylesheets'); ?>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <?php echo $__env->make('global.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    
+    <?php echo $__env->make($user->role . '.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <?php $__env->startSection('content'); ?>
+    <div class="page-content">
+        <?php echo $__env->yieldContent('profile_bar'); ?>
+        <div class="page-title with-desc">
+            <?php echo $__env->yieldContent('action_buttons'); ?>
+            <h2><?php echo $__env->yieldContent('title'); ?></h2>
+            <p><?php echo $__env->yieldContent('sub_title'); ?></p>
+        </div>
+        <?php echo $__env->yieldSection(); ?>
+    </div>
+
+    <!-- Start Page Modals -->
+    <?php echo $__env->yieldContent('modals'); ?>
+    <!-- End Page Modals -->
+
+    <!-- Core Scripts -->
+    <script src="<?php echo e(asset('assets/js/jquery-3.2.1.min.js')); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(asset('assets/libs/semantic-UI/semantic.min.js')); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(asset('assets/js/insura.js')); ?>" type="text/javascript"></script>
+    <!-- Page Specific Scripts -->
+    <script src="<?php echo e(asset('assets/libs/scrollbars/jquery.scrollbar.min.js')); ?>" type="text/javascript"></script>
+    <?php echo $__env->yieldContent('page_scripts'); ?>
+    <!-- Custom Scripts -->
+    <script src="<?php echo e(asset('assets/js/app.js')); ?>" type="text/javascript"></script>
+    <!-- Extra Scripts -->
+    <?php echo $__env->yieldContent('extra_scripts'); ?>
+
+</body>
+</html>

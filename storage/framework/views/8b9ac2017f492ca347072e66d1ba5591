@@ -1,0 +1,65 @@
+      <?php if(count($errors) > 0): ?>
+      <div class="ui error icon message">
+        <i class="ion-alert-circled icon"></i>
+        <i class="close icon"></i>
+        <div class="content">
+          <div class="header">
+            <?php echo e(trans('status.header.error')); ?>
+
+          </div>
+          <ul class="list">
+            <?php foreach($errors->all() as $error): ?>
+              <li><?php echo e($error); ?></li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
+      </div>
+      <?php endif; ?>
+
+      <?php if(session('status') || session('info')): ?>
+      <div class="ui info icon message">
+        <i class="ion-android-alert icon"></i>
+        <i class="close icon"></i>
+        <div class="content">
+          <p><?php echo e(session('status') ?: session('info')); ?></p>
+        </div>
+      </div>
+      <?php endif; ?>
+
+      <?php if(session('success')): ?>
+      <div class="ui success icon message">
+        <i class="ion-checkmark-circled icon"></i>
+        <i class="close icon"></i>
+        <div class="content">
+          <p><?php echo e(session('success')); ?></p>
+        </div>
+      </div>
+      <?php endif; ?>
+
+      <?php if(session('warning')): ?>
+      <div class="ui warning icon message">
+        <i class="ion-alert icon"></i>
+        <i class="close icon"></i>
+        <div class="content">
+          <p><?php echo e(session('warning')); ?></p>
+        </div>
+      </div>
+      <?php endif; ?>
+
+      <?php if(session('warnings')): ?>
+      <div class="ui warning icon message">
+        <i class="ion-alert icon"></i>
+        <i class="close icon"></i>
+        <div class="content">
+          <div class="header">
+            <?php echo e(trans('status.header.warning')); ?>
+
+          </div>
+          <ul class="list">
+            <?php foreach($session(warnings) as $warning): ?>
+              <li><?php echo e($warning); ?></li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
+      </div>
+      <?php endif; ?>
